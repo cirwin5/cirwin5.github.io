@@ -1,0 +1,100 @@
+<!--Created by GeoCities Home Page Generator-->
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+
+function makearray(n) {
+    this.length = n;
+    for(var i = 1; i <= n; i++)
+        this[i] = 0;
+    return this;
+}
+
+hexa = new makearray(16);
+for(var i = 0; i < 10; i++)
+    hexa[i] = i;
+hexa[10]="a"; hexa[11]="b"; hexa[12]="c";
+hexa[13]="d"; hexa[14]="e"; hexa[15]="f";
+
+function hex(i) {
+    if (i < 0)
+        return "00";
+    else if (i > 255)
+        return "ff";
+    else
+        return "" + hexa[Math.floor(i/16)] + hexa[i%16];
+}
+
+function setbgColor(r, g, b) {
+    var hr = hex(r); var hg = hex(g); var hb = hex(b);
+    document.bgColor = "#"+hr+hg+hb;
+}
+
+function fade(sr, sg, sb, er, eg, eb, step) {
+    for(var i = 0; i <= step; i++) {
+        setbgColor(
+        Math.floor(sr * ((step-i)/step) + er * (i/step)),
+        Math.floor(sg * ((step-i)/step) + eg * (i/step)),
+        Math.floor(sb * ((step-i)/step) + eb * (i/step)));
+    }
+}
+
+function fadein() {
+    fade(255,255,255, 0,0,0, 64);
+}
+
+function fadeout() {
+    fade(0,0,0, 255,255,255, 64);
+}
+
+fadein();
+
+</SCRIPT>
+
+<!--COLOR-->
+<BODY BACKGROUND="left.jpg" BGPROPERTIES="fixed" BGCOLOR="#000000" TEXT="#FFFFFF" LINK="#FFFFFF" VLINK="#FFFFFF">
+<script type='text/javascript' src='/js/header.js'>
+</script>
+
+
+
+<!--HEAD1-->
+<h3><font size=3 face="Arial, Helvectiva">Welcome to <font size=3 color="7093DB">Aardvark</B></font><font size=3 color=ffffff face="Arial, Helvectiva">Hell...</b></font></h3>
+<br>
+
+<!--HEAD2-->
+<h3></h3>
+<p>
+
+<!--LINE1-->
+
+<p>
+
+<!--BODY-->
+<font size=2 color="FFFFFF" FACE="Arial, Helvectiva">
+<A HREF="main.html" TARGET="main">Main Page</A><br>
+<a href="dbz.html" TARGET="main">Dragon Ball</a><br>
+<A HREF="jokes.html" TARGET="main">Jokes Archive</A><br>
+<A HREF="cool_links.html" TARGET="main">Links</A><br>
+<A HREF="me.html" TARGET="main">About me</A><br>
+<A HREF="thanks.html" TARGET="main">Special thanks</a><br>
+<A HREF="guestbook.html" TARGET="main">Guestbook</a><br>
+<a href="mailto:merlin335@hotmail.com">Email me</a><br>
+
+<EMBED SRC="sweetunforgiven2.mid" HIDDEN=TRUE AUTOSTART=TRUE REPEAT=TRUE>
+</font>
+<font size=2 FACE="Arial, Helvectiva"><center>
+Over<br>
+<img src="number.gif"><br>
+damned souls have come...<br>
+</font></center>
+
+
+<P>
+<HR>
+<P>
+
+</BODY>
+</HTML>
