@@ -1,0 +1,55 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Bunny</title>
+			<script type="text/javascript" src="webgl-utils.js"></script>
+			<script type="text/javascript" src="webgl-debug.js"></script>
+			<script type="text/javascript" src="cuon-utils.js"></script>
+			<script type="text/javascript" src="cuon-matrix.js"></script>
+			<script type="text/javascript" src="bunny.js"></script>
+			<script type="text/javascript" src="Viewer.js"></script>
+	</head>
+	<body onload="init()">
+		<script id="vertexShader" type="x-shader/x-vertex">
+		
+			uniform mat4 projectionMatrix;
+			uniform mat4 modelMatrix;
+			uniform vec3 lightDirection;
+			uniform vec3 lightColor;
+			uniform vec3 objectColor;
+			
+			attribute vec4 vertexPosition;
+			attribute vec3 vertexNormal;
+			
+			varying mediump vec3 fragmentColor;
+			void main() {
+				vec4 p = modelMatrix * vertexPosition;
+				vec3 n = normalize(mat3(modelMatrix) * vertexNormal);
+				vec3 l = normalize(mat3(modelMatrix) * lightDirection);
+				
+				vec3 v = normalize(vec3(-p));
+				vec3 h = normalize(v + l);
+				
+				float d = max(dot(n, l), 0.0); 
+				float s = pow(max(dot(n, h), 0.0), 100.0);
+				
+				fragmentColor = lightColor * (objectColor * d + s);
+				gl_Position = projectionMatrix * modelMatrix * vertexPosition;
+			}
+			
+		</script>
+		<script id="fragmentShader" type="x-shader/x-fragment">
+			
+			varying mediump vec3 fragmentColor;
+			void main() {
+				gl_FragColor = vec4(fragmentColor, 1.0);
+			}
+		</script>
+			
+		<canvas id="webgl" width="500px" height="500px">
+			This content requires <a href="http://get.webgl.org/">WebGL</a>.
+		</canvas>
+	</body>
+</html>
+		
