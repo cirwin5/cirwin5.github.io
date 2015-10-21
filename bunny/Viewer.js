@@ -108,7 +108,7 @@ function flatten(a) {
 	return a.reduce(function (b, v) { b.push.apply(b, v); return b; }, [])
 }
 
-function init() {
+function bunnyInit() {
 	
 	//Initialize the WebGL context.
 	
